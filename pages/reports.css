@@ -1,0 +1,26 @@
+.outer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+thead{
+    background-color: darkgrey;
+}
+
+.table-responsive{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 50% !important;
+}
+
+.table{
+    width: 100%;
+}
+
+.footer{
+    margin-top: 1.5rem;
+}
