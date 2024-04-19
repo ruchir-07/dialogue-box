@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './reports.css'
+import { IoDownloadOutline } from "react-icons/io5";
 
 const ReportsPage = () => {
     const [reports, setReports] = useState([]);
@@ -8,27 +9,27 @@ const ReportsPage = () => {
 
     const fetchReports = async () => {
         const dummyReports = [
-            { id: 1, name: 'Report 1', date: '2024-04-01' },
-            { id: 2, name: 'Report 2', date: '2024-04-02' },
-            { id: 3, name: 'Report 3', date: '2024-04-03' },
-            { id: 4, name: 'Report 4', date: '2024-04-03' },
-            { id: 5, name: 'Report 5', date: '2024-04-03' },
-            { id: 6, name: 'Report 6', date: '2024-04-03' },
-            { id: 7, name: 'Report 7', date: '2024-04-03' },
-            { id: 8, name: 'Report 8', date: '2024-04-03' },
-            { id: 9, name: 'Report 9', date: '2024-04-03' },
-            { id: 10, name: 'Report 10', date: '2024-04-03' },
-            { id: 11, name: 'Report 11', date: '2024-04-03' },
-            { id: 12, name: 'Report 12', date: '2024-04-03' },
-            { id: 13, name: 'Report 13', date: '2024-04-03' },
-            { id: 14, name: 'Report 14', date: '2024-04-03' },
-            { id: 15, name: 'Report 15', date: '2024-04-03' },
-            { id: 16, name: 'Report 16', date: '2024-04-03' },
-            { id: 17, name: 'Report 16', date: '2024-04-03' },
-            { id: 18, name: 'Report 16', date: '2024-04-03' },
-            { id: 19, name: 'Report 16', date: '2024-04-03' },
-            { id: 20, name: 'Report 16', date: '2024-04-03' },
-            { id: 21, name: 'Report 16', date: '2024-04-03' },
+            { id: 1, name: 'Report 1', date: '2024-04-01T12:30:00' },
+            { id: 3, name: 'Report 3', date: '2024-04-02T12:30:00' },
+            { id: 2, name: 'Report 2', date: '2024-04-03T12:30:00' },
+            { id: 4, name: 'Report 4', date: '2024-04-04T12:30:00' },
+            { id: 5, name: 'Report 5', date: '2024-04-05T12:30:00' },
+            { id: 6, name: 'Report 6', date: '2024-04-06T12:30:00' },
+            { id: 7, name: 'Report 7', date: '2024-04-07T12:30:00' },
+            { id: 8, name: 'Report 8', date: '2024-04-08T12:30:00' },
+            { id: 9, name: 'Report 9', date: '2024-04-09T12:30:00' },
+            { id: 10, name: 'Report 10', date: '2024-04-10T12:30:00' },
+            { id: 11, name: 'Report 11', date: '2024-04-11T12:30:00' },
+            { id: 12, name: 'Report 12', date: '2024-04-12T12:30:00' },
+            { id: 13, name: 'Report 13', date: '2024-04-13T12:30:00' },
+            { id: 14, name: 'Report 14', date: '2024-04-14T12:30:00' },
+            { id: 15, name: 'Report 15', date: '2024-04-15T12:30:00' },
+            { id: 16, name: 'Report 16', date: '2024-04-16T12:30:00' },
+            { id: 17, name: 'Report 16', date: '2024-17-17T12:30:00' },
+            { id: 18, name: 'Report 16', date: '2024-04-18T12:30:00' },
+            { id: 19, name: 'Report 16', date: '2024-04-19T12:30:00' },
+            { id: 20, name: 'Report 16', date: '2024-04-20T12:30:00' },
+            { id: 21, name: 'Report 16', date: '2024-04-21T12:30:00' },
             // Add more dummy data as needed
         ];
         setReports(dummyReports);
@@ -62,11 +63,26 @@ const ReportsPage = () => {
                         <tbody>
                             {currentReports.map((report) => (
                                 <tr key={report.id}>
-                                    <td>{report.date}</td>
+                                    <td>
+                                        {/* Date in "day month year" format */}
+                                        {new Date(report.date).toLocaleDateString('en-US', {
+                                            day: '2-digit',
+                                            month: '2-digit',
+                                            year: 'numeric'
+                                        }).replace(/\//g, '.')}
+                                        <br />
+                                        {/* Time in "hour:minute" format */}
+                                        <small style={{fontSize: '0.7rem'}}>
+                                            {new Date(report.date).toLocaleTimeString('en-US', {
+                                                hour: '2-digit',
+                                                minute: '2-digit'
+                                            })}
+                                        </small>
+                                    </td>
                                     <td>{report.name}</td>
                                     <td>
                                         <a href="#" className="btn btn-primary">
-                                            <i className="bi bi-cloud-download"></i>
+                                            <IoDownloadOutline size={25} />
                                         </a>
                                     </td>
                                 </tr>
